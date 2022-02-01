@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 18:27:11 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/12/05 18:30:39 by vcordeir         ###   ########.fr       */
+/*   Updated: 2022/02/01 18:24:03 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int	main(void)
 	struct sigaction	sa;
 
 	sa.sa_handler = handler;
+	sa.sa_flags = SA_SIGINFO;
 	sigemptyset(&sa.sa_mask);
 	if (sigaction(SIGUSR1, &sa, NULL) != 0)
 		return (1);
