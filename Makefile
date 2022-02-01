@@ -8,14 +8,18 @@ SRC_SERVER = ft_server.c src/ft_strlen.c src/ft_concatenate.c src/ft_itoa.c src/
 OBJ_S = $(SRC_SERVER:.c=.o)
 SERVER_NAME = server
 
-CFLAGS = -Wall -Werror -Wextra -I./
+CFLAGS = -g3 -Wall -Werror -Wextra -I./
 
 .PHONY: all clean fclean re
 
 all:    $(NAME)
 
-$(NAME): $(OBJ_C) $(OBJ_S)
+$(NAME): client server
+
+client: $(OBJ_C)
 	gcc $(CFLAGS) $(OBJ_C) -o $(CLIENT_NAME)
+
+server:	$(OBJ_S)
 	gcc $(CFLAGS) $(OBJ_S) -o $(SERVER_NAME)
 
 clean:
